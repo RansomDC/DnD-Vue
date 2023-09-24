@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ranso\\Documents\\Programming\\C# Projects\\DnD-API\\DnD-API.csproj": {}
+    "C:\\Users\\Ranso\\OneDrive\\Documents\\Programming\\CSProjects\\DnD-Vue\\DnD-API\\DnD-API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ranso\\Documents\\Programming\\C# Projects\\DnD-API\\DnD-API.csproj": {
+    "C:\\Users\\Ranso\\OneDrive\\Documents\\Programming\\CSProjects\\DnD-Vue\\DnD-API\\DnD-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ranso\\Documents\\Programming\\C# Projects\\DnD-API\\DnD-API.csproj",
+        "projectUniqueName": "C:\\Users\\Ranso\\OneDrive\\Documents\\Programming\\CSProjects\\DnD-Vue\\DnD-API\\DnD-API.csproj",
         "projectName": "DnD-API",
-        "projectPath": "C:\\Users\\Ranso\\Documents\\Programming\\C# Projects\\DnD-API\\DnD-API.csproj",
+        "projectPath": "C:\\Users\\Ranso\\OneDrive\\Documents\\Programming\\CSProjects\\DnD-Vue\\DnD-API\\DnD-API.csproj",
         "packagesPath": "C:\\Users\\Ranso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ranso\\Documents\\Programming\\C# Projects\\DnD-API\\obj\\",
+        "outputPath": "C:\\Users\\Ranso\\OneDrive\\Documents\\Programming\\CSProjects\\DnD-Vue\\DnD-API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
