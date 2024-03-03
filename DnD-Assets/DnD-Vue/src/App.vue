@@ -1,4 +1,5 @@
 <template>
+  <!-- Original Components
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
@@ -9,12 +10,20 @@
 
   <main>
     <TheWelcome />
-  </main>
+  </main> -->
+
+  <div>
+    <CharachterSheet />
+  </div>
+
 </template>
 
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+  // //Original components
+  // import HelloWorld from './components/HelloWorld.vue'
+  // import TheWelcome from './components/TheWelcome.vue'
+
+  import CharachterSheet from './components/charachterSheet.vue'
 </script>
 
 <style scoped>
