@@ -38,16 +38,144 @@
 
   <div class="char-body skeleton display-grid">
     <div class="skeleton body-left">
-      <div class="skeleton atr strength"></div>
-      <div class="skeleton atr dexterity"></div>
-      <div class="skeleton atr constitution"></div>
-      <div class="skeleton atr intelligence"></div>
-      <div class="skeleton atr wisdom"></div>
-      <div class="skeleton atr charisma"></div>
-      <div class="skeleton inspiration"></div>
-      <div class="skeleton proficiency"></div>
-      <div class="skeleton saving-throws"></div>
-      <div class="skeleton skills"></div>
+      <div class="skeleton atr strength">
+        <p class="label">STRENGTH</p>
+        <input class="str" />
+        <p class="str-mod mod"></p>
+      </div>
+      <div class="skeleton atr dexterity">
+        <p class="label">DEXTERITY</p>
+        <input class="dex" />
+        <p class="dex-mod mod"></p>
+      </div>
+      <div class="skeleton atr constitution">
+        <p class="label">CONSTITUTION</p>
+        <input class="con" />
+        <p class="con-mod mod"></p>
+      </div>
+      <div class="skeleton atr intelligence">
+        <p class="label">INTELLIGENCE</p>
+        <input class="int" />
+        <p class="int-mod mod"></p>
+      </div>
+      <div class="skeleton atr wisdom">
+        <p class="label">WISDOM</p>
+        <input class="wis" />
+        <p class="wis-mod mod"></p>
+      </div>
+      <div class="skeleton atr charisma">
+        <p class="label">CHARISMA</p>
+        <input class="cha" />
+        <p class="cha-mod mod"></p>
+      </div>
+      <div class="skeleton inspiration">
+        <input>
+        <label></label>
+      </div>
+      <div class="skeleton proficiency">
+        <input>
+        <label></label>
+      </div>
+      <div class="skeleton saving-throws display-grid">
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Strength</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Dexterity</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Constitution</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Intelligence</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Wisdom</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Charisma</label>
+      </div>
+      <div class="skeleton skills display-grid">
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Acrobatics</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Animal Handling</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Arcana</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Athletics</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Deception</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>History</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Insight</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Intimidation</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Investigation</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Medicine</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Nature</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Perception</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Performance</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Persuasion</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Religion</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Sleight of Hand</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Stealth</label>
+
+        <input type="checkbox">
+        <p class="paragraph-style"></p>
+        <label>Survival</label>
+
+        
+      </div>
       <div class="skeleton passive-perception"></div>
       <div class="skeleton proficiencies-languages"></div>
     </div>
@@ -132,18 +260,30 @@
     .inspiration {
       grid-row: 1;
       grid-column: 2 / 4;
+
+      input {
+        height: 2em;
+        width: 2em;
+      }
     }
     .proficiency {
       grid-row: 2;
       grid-column: 2 / 4;
+
+      input {
+        height: 2em;
+        width: 2em;
+      }
     }
     .saving-throws {
       grid-row: 3 / 7;
       grid-column: 2 / 4;
+      grid-template-columns: 1fr 1fr 3fr;
     }
     .skills {
       grid-row: 7 / 14;
       grid-column: 2 / 4;
+      grid-template-columns: 1fr 1fr 3fr;
     }
     .passive-perception {
       grid-row: 14;
@@ -152,6 +292,27 @@
     .proficiencies-languages {
       grid-row: 15 / 19;
       grid-column: 1 / 4;
+    }
+
+    .atr {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        font-size: 16pt;
+        height: 2em;
+        width: 2em;
+        font-weight: 600;
+        margin: auto;
+      }
+
+      .mod {
+        border: solid 1px red;
+        width: 1em;
+        height: 1em;
+        margin: auto;
+      }
     }
   }
 
@@ -224,5 +385,10 @@
   .skeleton {
     padding:10px;
     border: 1px solid violet;
+  }
+
+  .paragraph-style {
+    border: 1px solid red;
+    padding: 10px;
   }
 </style>
