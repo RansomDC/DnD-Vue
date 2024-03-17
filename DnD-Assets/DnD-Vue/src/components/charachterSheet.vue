@@ -76,106 +76,17 @@
         <input>
         <label></label>
       </div>
-      <div class="skeleton saving-throws display-grid">
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Strength</label>
+      <ul class="skeleton saving-throws">
+        <li v-for="checkbox in attributesList">
+          <ListCheckbox :model="checkbox"></ListCheckbox>
+        </li>
+      </ul>
+      <ul class="skeleton skills">
+        <li v-for="checkbox in skillsList">
+          <ListCheckbox :model="checkbox"></ListCheckbox>
+        </li>
+      </ul>
 
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Dexterity</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Constitution</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Intelligence</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Wisdom</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Charisma</label>
-      </div>
-      <div class="skeleton skills display-grid">
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Acrobatics</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Animal Handling</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Arcana</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Athletics</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Deception</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>History</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Insight</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Intimidation</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Investigation</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Medicine</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Nature</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Perception</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Performance</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Persuasion</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Religion</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Sleight of Hand</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Stealth</label>
-
-        <input type="checkbox">
-        <p class="paragraph-style"></p>
-        <label>Survival</label>
-
-        
-      </div>
       <div class="skeleton passive-perception"></div>
       <div class="skeleton proficiencies-languages"></div>
     </div>
@@ -201,7 +112,31 @@
 </template>
 
 <script setup lang=ts>
+  import { ListCheckboxModel } from './listCheckbox/listCheckboxModel';
+  import ListCheckbox from './listCheckbox/listCheckbox.vue';
+  import { computed } from 'vue'
 
+  const skillNames = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"]; 
+  const attributeNames = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
+
+  const attributesList = computed(() => {
+    const attributes = new Array();
+    attributeNames.forEach((skill) => {
+      const attributeModel = new ListCheckboxModel("", skill);
+      attributes.push(attributeModel);
+    });
+    return attributes;
+  });
+
+  const skillsList = computed(() => {
+    const skills = new Array();
+    skillNames.forEach((skill) => {
+      const skillModel = new ListCheckboxModel("", skill);
+      skills.push(skillModel);
+    });
+    return skills;
+  });
+  
 </script>
 
 <style>
@@ -284,6 +219,10 @@
       grid-row: 7 / 14;
       grid-column: 2 / 4;
       grid-template-columns: 1fr 1fr 3fr;
+
+      li {
+        list-style-type: none;
+      }
     }
     .passive-perception {
       grid-row: 14;
@@ -343,19 +282,19 @@
       grid-column: 1 / 7;
     }
     .hit-dice {
-      grid-row: 9 / 12;
+      grid-row: 9 / 11;
       grid-column: 1 / 4;
     }
     .death-saves {
-      grid-row: 9 / 12;
+      grid-row: 9 / 11;
       grid-column: 4 / 7;
     }
     .attacks-spellcasting {
-      grid-row: 12 / 15;
+      grid-row: 11 / 14;
       grid-column: 1 / 7;
     }
     .equipment {
-      grid-row: 15 / 19;
+      grid-row: 14 / 19;
       grid-column: 1 / 7;
     }
   }
