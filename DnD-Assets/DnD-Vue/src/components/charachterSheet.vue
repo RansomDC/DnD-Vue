@@ -102,11 +102,9 @@
       <div class="skeleton equipment"></div>
     </div>
     <div class="skeleton body-right">
-      <div class="skeleton personality-traits"></div>
-      <div class="skeleton ideals"></div>
-      <div class="skeleton bonds"></div>
-      <div class="skeleton flaws"></div>
-      <div class="skeleton features-traits"></div>
+      <div v-for="dropdown in traitList" class="skeleton" :class="dropdown">
+        <traitDropdown :className="dropdown"></traitDropdown>
+      </div>
     </div>
   </div>
 </template>
@@ -115,9 +113,12 @@
   import { ListCheckboxModel } from './listCheckbox/listCheckboxModel';
   import ListCheckbox from './listCheckbox/listCheckbox.vue';
   import { computed } from 'vue'
+  import traitDropdown from './traitDropdown/traitDropdown.vue';
 
+  //temporary lists of different similar sectionss. Later I'll add ways to adjust these names and lists.
   const skillNames = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"]; 
   const attributeNames = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
+  const traitNames = ["personality-traits", "ideals", "bonds", "flaws"];
 
   const attributesList = computed(() => {
     const attributes = new Array();
@@ -135,6 +136,14 @@
       skills.push(skillModel);
     });
     return skills;
+  });
+
+  const traitList = computed(() => {
+    const traits = new Array();
+    traitNames.forEach((trait) => {
+      traits.push(trait); 
+    });
+    return traits;
   });
   
 </script>
