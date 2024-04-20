@@ -153,6 +153,10 @@
     display: grid;
   }
 
+  li {
+    list-style: none;
+  }
+
   .char-header {
     grid-template-columns: 20% auto;
   }
@@ -228,10 +232,6 @@
       grid-row: 7 / 14;
       grid-column: 2 / 4;
       grid-template-columns: 1fr 1fr 3fr;
-
-      li {
-        list-style-type: none;
-      }
     }
     .passive-perception {
       grid-row: 14;
