@@ -38,16 +38,55 @@
 
   <div class="char-body skeleton display-grid">
     <div class="skeleton body-left">
-      <div class="skeleton atr strength"></div>
-      <div class="skeleton atr dexterity"></div>
-      <div class="skeleton atr constitution"></div>
-      <div class="skeleton atr intelligence"></div>
-      <div class="skeleton atr wisdom"></div>
-      <div class="skeleton atr charisma"></div>
-      <div class="skeleton inspiration"></div>
-      <div class="skeleton proficiency"></div>
-      <div class="skeleton saving-throws"></div>
-      <div class="skeleton skills"></div>
+      <div class="skeleton atr strength">
+        <p class="label">STRENGTH</p>
+        <input class="str" />
+        <p class="str-mod mod"></p>
+      </div>
+      <div class="skeleton atr dexterity">
+        <p class="label">DEXTERITY</p>
+        <input class="dex" />
+        <p class="dex-mod mod"></p>
+      </div>
+      <div class="skeleton atr constitution">
+        <p class="label">CONSTITUTION</p>
+        <input class="con" />
+        <p class="con-mod mod"></p>
+      </div>
+      <div class="skeleton atr intelligence">
+        <p class="label">INTELLIGENCE</p>
+        <input class="int" />
+        <p class="int-mod mod"></p>
+      </div>
+      <div class="skeleton atr wisdom">
+        <p class="label">WISDOM</p>
+        <input class="wis" />
+        <p class="wis-mod mod"></p>
+      </div>
+      <div class="skeleton atr charisma">
+        <p class="label">CHARISMA</p>
+        <input class="cha" />
+        <p class="cha-mod mod"></p>
+      </div>
+      <div class="skeleton inspiration">
+        <input>
+        <label></label>
+      </div>
+      <div class="skeleton proficiency">
+        <input>
+        <label></label>
+      </div>
+      <ul class="skeleton saving-throws">
+        <li v-for="checkbox in attributesList">
+          <ListCheckbox :model="checkbox"></ListCheckbox>
+        </li>
+      </ul>
+      <ul class="skeleton skills">
+        <li v-for="checkbox in skillsList">
+          <ListCheckbox :model="checkbox"></ListCheckbox>
+        </li>
+      </ul>
+
       <div class="skeleton passive-perception"></div>
       <div class="skeleton proficiencies-languages"></div>
     </div>
@@ -63,22 +102,59 @@
       <div class="skeleton equipment"></div>
     </div>
     <div class="skeleton body-right">
-      <div class="skeleton personality-traits"></div>
-      <div class="skeleton ideals"></div>
-      <div class="skeleton bonds"></div>
-      <div class="skeleton flaws"></div>
-      <div class="skeleton features-traits"></div>
+      <div v-for="dropdown in traitList" class="skeleton" :class="dropdown">
+        <traitDropdown :className="dropdown"></traitDropdown>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang=ts>
+  import { ListCheckboxModel } from './listCheckbox/listCheckboxModel';
+  import ListCheckbox from './listCheckbox/listCheckbox.vue';
+  import { computed } from 'vue'
+  import traitDropdown from './traitDropdown/traitDropdown.vue';
 
+  //temporary lists of different similar sectionss. Later I'll add ways to adjust these names and lists.
+  const skillNames = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"]; 
+  const attributeNames = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
+  const traitNames = ["personality-traits", "ideals", "bonds", "flaws"];
+
+  const attributesList = computed(() => {
+    const attributes = new Array();
+    attributeNames.forEach((skill) => {
+      const attributeModel = new ListCheckboxModel("", skill);
+      attributes.push(attributeModel);
+    });
+    return attributes;
+  });
+
+  const skillsList = computed(() => {
+    const skills = new Array();
+    skillNames.forEach((skill) => {
+      const skillModel = new ListCheckboxModel("", skill);
+      skills.push(skillModel);
+    });
+    return skills;
+  });
+
+  const traitList = computed(() => {
+    const traits = new Array();
+    traitNames.forEach((trait) => {
+      traits.push(trait); 
+    });
+    return traits;
+  });
+  
 </script>
 
 <style>
   .display-grid {
     display: grid;
+  }
+
+  li {
+    list-style: none;
   }
 
   .char-header {
@@ -132,18 +208,30 @@
     .inspiration {
       grid-row: 1;
       grid-column: 2 / 4;
+
+      input {
+        height: 2em;
+        width: 2em;
+      }
     }
     .proficiency {
       grid-row: 2;
       grid-column: 2 / 4;
+
+      input {
+        height: 2em;
+        width: 2em;
+      }
     }
     .saving-throws {
       grid-row: 3 / 7;
       grid-column: 2 / 4;
+      grid-template-columns: 1fr 1fr 3fr;
     }
     .skills {
       grid-row: 7 / 14;
       grid-column: 2 / 4;
+      grid-template-columns: 1fr 1fr 3fr;
     }
     .passive-perception {
       grid-row: 14;
@@ -152,6 +240,27 @@
     .proficiencies-languages {
       grid-row: 15 / 19;
       grid-column: 1 / 4;
+    }
+
+    .atr {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        font-size: 16pt;
+        height: 2em;
+        width: 2em;
+        font-weight: 600;
+        margin: auto;
+      }
+
+      .mod {
+        border: solid 1px red;
+        width: 1em;
+        height: 1em;
+        margin: auto;
+      }
     }
   }
 
@@ -182,19 +291,19 @@
       grid-column: 1 / 7;
     }
     .hit-dice {
-      grid-row: 9 / 12;
+      grid-row: 9 / 11;
       grid-column: 1 / 4;
     }
     .death-saves {
-      grid-row: 9 / 12;
+      grid-row: 9 / 11;
       grid-column: 4 / 7;
     }
     .attacks-spellcasting {
-      grid-row: 12 / 15;
+      grid-row: 11 / 14;
       grid-column: 1 / 7;
     }
     .equipment {
-      grid-row: 15 / 19;
+      grid-row: 14 / 19;
       grid-column: 1 / 7;
     }
   }
@@ -224,5 +333,10 @@
   .skeleton {
     padding:10px;
     border: 1px solid violet;
+  }
+
+  .paragraph-style {
+    border: 1px solid red;
+    padding: 10px;
   }
 </style>
