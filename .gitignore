@@ -37,6 +37,12 @@ ehthumbs.db
 Thumbs.db
 
 .vs/
+<<<<<<< HEAD
 DnD-API/bin/
 DnD-API/obj/
 DnD-API/.vs/
+=======
+DND-API/.vs/
+DND-API/bin/
+DND-API/obj/
+>>>>>>> main

@@ -114,7 +114,10 @@
   import ListCheckbox from './listCheckbox/listCheckbox.vue';
   import { computed } from 'vue'
   import traitDropdown from './traitDropdown/traitDropdown.vue';
+<<<<<<< HEAD
   import { onMounted } from 'vue';
+=======
+>>>>>>> main
 
   //temporary lists of different similar sectionss. Later I'll add ways to adjust these names and lists.
   const skillNames = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"]; 
@@ -146,6 +149,7 @@
     });
     return traits;
   });
+<<<<<<< HEAD
 
   onMounted(() => {
     fetchtest();
@@ -160,6 +164,9 @@
 					console.error(err);
 				});
 		}
+=======
+  
+>>>>>>> main
 </script>
 
 <style>
