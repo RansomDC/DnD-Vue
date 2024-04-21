@@ -7,5 +7,11 @@ namespace DnD_API.Controllers
     [ApiController]
     public class HomepageController : ControllerBase
     {
+        [HttpGet]
+        [Route("stuff-it")]
+        public Object Get()
+        {
+            return new Dictionary<string, string>() { { "string", "gotten data" } };
+        }
     }
 }
