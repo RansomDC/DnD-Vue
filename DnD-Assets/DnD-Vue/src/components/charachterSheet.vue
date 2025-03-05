@@ -76,16 +76,12 @@
         <input>
         <label></label>
       </div>
-      <ul class="skeleton saving-throws">
-        <li v-for="checkbox in attributesList">
-          <ListCheckbox :model="checkbox"></ListCheckbox>
-        </li>
-      </ul>
-      <ul class="skeleton skills">
-        <li v-for="checkbox in skillsList">
-          <ListCheckbox :model="checkbox"></ListCheckbox>
-        </li>
-      </ul>
+      <div class="skeleton saving-throws">
+        <CheckboxList :checkboxes="attributesList" listType="saving-throws"></CheckboxList>
+      </div>
+      <div class="skeleton skills">
+        <CheckboxList :checkboxes="skillsList" listType="skills"></CheckboxList>
+      </div>
 
       <div class="skeleton passive-perception"></div>
       <div class="skeleton proficiencies-languages"></div>
@@ -112,6 +108,7 @@
 <script setup lang=ts>
   import { ListCheckboxModel } from './listCheckbox/listCheckboxModel';
   import ListCheckbox from './listCheckbox/listCheckbox.vue';
+  import CheckboxList from './checkboxList/checkboxList.vue';
   import { computed } from 'vue'
   import traitDropdown from './traitDropdown/traitDropdown.vue';
   import { onMounted } from 'vue';
